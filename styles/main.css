@@ -2,8 +2,213 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
 
 
+
+
+
+.nav-wrapper {
+    width: 100%;
+    height: 10vh;
+    padding: 10px;  /* Increased padding for better spacing */
+    margin: 5px auto;  /* Center the menu bar */
+    max-width: 800px;  /* Optional: set a max width */
+}
+
+.nav-wrapper nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 10%;
+}
+
+.link {
+    transition: all 0.3s ease;
+}
+
+.link span {
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 32px;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: transform 0.1s linear;
+}
+
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    padding: 0.3rem;
+    background-color: #fff;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transition: transform 0.3s ease;
+}
+
+.link:hover ~ .cursor {
+    transform:translate(-50%, -50%) scale(8);
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-wrapper nav {
+        flex-direction: row; /* Ensure nav items are in a row for mobile */
+        justify-content: space-around; /* Space items evenly */
+        top: 0; /* Reset top position for better alignment */
+    }
+
+    .link span {
+        font-size: 12px; /* Optional: Adjust font size for mobile */
+    }
+}
+
+
+
+
+:root{
+    --color-primary: #FF4B4B;
+    --color-text: #545d7a;
+    --color-white: #fff;
+    --color-title: #242e4c;
+    --color-background: #f7f8fb;
+    --color-border: #dae1f5;
+    
+    /* Fonts */
+    --font-family: "Satoshi", sans-serif;
+    --fs-sm: 1.4rem;
+    --fs-md: 1.6rem;
+    --fs-lg: 2.2rem;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+    
+    /* Transition & Box Shadow */
+    --transition: 0.4s ease-in-out; 
+    --shadow: 0px 60px 56px -12px rgba(9, 40, 163, 0.05); 
+    
+    }
+    
+    html {
+        font-size: 62.5%;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* box-sizing: content-box; */
+    }
+    
+    body {
+        background-color: var(--color-background);
+        font-family: var(--font-family);
+        color: var(--color-text);
+        font-size: var(--fs-md);
+        font-weight: var(--fw-regular);
+    }
+    
+    .container{ 
+        width: 100%;
+        margin: auto;
+        min-height: 100vh;
+        padding: 2rem;
+        display: grid;
+        place-items: center;
+    }
+    
+    .accordion__wrapper {
+        background-color: var(--color-white);
+        box-shadow: var(--shadow);
+        border-radius: 2.5rem;
+        width: 100%;
+        max-width: 60rem;
+        padding: 5rem;
+    }
+    
+    .accordion__title{
+        font-size: var(--fs-lg);
+        font-weight: var(--fw-bold);
+        color: var(--color-title);
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    
+    .accordion {
+        border-bottom: 0.1rem solid var(--color-border);
+        padding-bottom: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .accordion__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+    } 
+    
+    .accordion__icon {
+        background-color: var(--color-primary);
+        width: 2.2rem;
+        height: 2.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: var(--color-white);
+        flex-shrink: 0;
+    }
+    
+    .accordion__question{
+        font-size: var(--fs-md);
+        font-weight: var(--fw-medium);
+        color: var(--color-title);
+    }
+    
+    .accordion__answer{
+        padding: 2rem 0;
+    }
+    
+    .accordion__content{
+        overflow: hidden;
+        height: 0;
+        transition: var(--transition);
+    }
+    
+    @media screen and (min-width: 580px) {
+        .accordion__wrapper {
+            padding: 5rem 8rem;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  
 .snipcart-add-item {
     background-color: #4CAF50; /* Green background */
@@ -266,6 +471,7 @@
     
    
     
+    
     /* Pulse animation when the button is clicked */
     
     
@@ -403,7 +609,7 @@ section#products .card div.text p{
  opacity: .75;
 }
 section#products .card div.text h5{
- font-size: 1.5rem;
+ font-size: 3rem;
  letter-spacing: 2px;
  margin-bottom: 20px;
  color: var(--color-1);
