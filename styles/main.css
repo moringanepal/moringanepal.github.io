@@ -1,3 +1,5 @@
+
+
 .snipcart-add-item {
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove border */
@@ -150,7 +152,8 @@
         position: relative; /* Keep it in flow with the page */
         z-index: 0;
         filter: brightness(0.85); /* Slightly darken the video for a subtle blend */
-        transition: filter 0.3s ease; /* Smooth transition on hover */
+        opacity: 0;  /* Initially hidden */
+        transition: opacity 2s ease-in-out; /* Smooth transition on hover */
         mix-blend-mode: multiply; /* Blends the video with the background below */
     }
     
@@ -158,6 +161,7 @@
     .videoBg {
         transform: translate3d(0, 0, 0);
         background-attachment: fixed;
+        opacity: 1;
         will-change: transform;
     }
     
