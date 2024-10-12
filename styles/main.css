@@ -1,5 +1,10 @@
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
+
+ 
 .snipcart-add-item {
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove border */
@@ -216,7 +221,7 @@
            margin-bottom: 10px;
        }
        #logo img {
-           width: 200px; /* Larger logo */
+           width: 250px; /* Larger logo */
        }
 
        /* Product section with video */
@@ -678,7 +683,7 @@ body{
 #sloganSub{
     text-align: center;
     font-size: 30px;
-    color:rgb(73,70,116);
+    color:#FFD700;
     font-weight: lighter;
     margin:0;
 }
