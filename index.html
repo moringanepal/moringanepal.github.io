@@ -1,34 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #E6F0DC;">
+<html lang="en" >
+  <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
     <link rel="preload" as="video" href="res/video.mp4">
-  
-
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    
     <link id="mainStylesheet" rel="stylesheet" href="styles/main.css">
     <link rel="icon" href="res/favicon.png">
     <title>Home | MORINGA NEPAL</title>
+
     <style>
-        /* Navigation bar */
-    
-    </style>
+      /* Set initial background image for larger screens */
+      body {
+          background-image: url('res/bg.png');
+          background-size: cover;
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-color: 	#030501eb; /* Fallback color */
+          transition: background-color 8s ease, background-image 5s ease;
+          /* The transition duration (1.5s) can be adjusted */
+      }
+
+      /* Background color after scroll */
+      body.scrolled {
+          background-image: none;
+          background-color: #E6F0DC; /* Same color as before */
+      }
+
+      /* Remove background image for mobile devices */
+      @media only screen and (max-width: 768px) {
+          body {
+              background-image: none;
+              background-color: #E6F0DC;
+          }
+      }
+
+      
+  </style>
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <ul class="menu-bar">
-        <li><a href="#products">SHOP</a></li> 
-        <li><a href="under.html">ABOUT US</a></li>
-        <li><a href="under.html">CONTACT US</a></li>
-    </ul>
+  <!-- Navigation Bar -->
+  <ul class="menu-bar">
+      <li><a href="#products">SHOP</a></li> 
+      <li><a href="under.html">ABOUT US</a></li>
+      <li><a href="under.html">CONTACT US</a></li>
+  </ul>
+
+  <!-- Content of your page -->
+
+  <!-- JS to handle scroll behavior -->
+  <script>
+      window.addEventListener('scroll', function() {
+          if (window.scrollY > 100) {  // Change 100 to whatever scroll threshold you prefer
+              document.body.classList.add('scrolled');
+          } else {
+              document.body.classList.remove('scrolled');
+          }
+      });
+  </script>
+
+</body>
+
+
+<body>
 
 
 
@@ -60,6 +103,11 @@
       <video class="videoBg" autoplay muted loop playsinline>
           <source src="res/video.mp4" type="video/mp4">
       </video>
+      <script> 
+        window.addEventListener('load', function() {
+    document.querySelector('.videoBg').classList.add('show');
+});
+      </script>
   </div>
   
         
@@ -180,4 +228,5 @@
   (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
 </script>
 </body>
+</html>
 </html>
