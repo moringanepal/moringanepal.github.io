@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <link rel="preload"  href="res/video.mp4"  as="video">
-     
+    
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link id="mainStylesheet" rel="stylesheet" href="styles/main.css">
     <link rel="icon" href="res/favicon.png">
     <title>Home | MORINGA NEPAL</title>
@@ -23,15 +24,10 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-color: #192a08eb; /* Fallback color for initial state */
-    transition: background-color 8s ease, background-image 5s ease;
+    
 }
 
-/* Background color after scroll */
-body.scrolled {
-    background-image: none; /* Remove the image */
-    background-color: #C2D6B6; /* Fallback color to match green leaves */
-}
+
 
 /* Set background image for mobile devices */
 @media only screen and (max-width: 768px) {
@@ -66,14 +62,26 @@ body.scrolled {
 <body>
 
   <!-- Navigation Bar -->
-  <ul class="menu-bar">
-      <li><a href="#products">SHOP</a></li> 
-      <li><a href="under.html">ABOUT US</a></li>
-      <li><a href="under.html">CONTACT US</a></li>
-      <button class="snipcart-checkout">
-        🛒 (<span class="snipcart-items-count">0</span>)
-    </button>
-  </ul>
+
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="#" class="link">
+        <span>Home</span>
+      </a>
+      <a href="#products" class="link">
+        <span>SHOP</span>
+      </a>
+      <a href="under.html" class="link">
+        <span>ABOUT US</span>
+      </a>
+      <a href="#" class="snipcart-checkout link">
+        <span><img src="res/cart.png" alt="Cart" width="40" height="40">(<span class="snipcart-items-count">0</span>)</span>
+      </a>
+  
+      <div class="cursor"></div>
+    </nav>
+  </div>
 
   <!-- Content of your page -->
 
@@ -231,7 +239,7 @@ body.scrolled {
           <button class="snipcart-add-item"
   data-item-id="MORINGA POWDER 500 GRAMS"
   data-item-price="15"
-  data-item-name="powder">
+  data-item-name="MORINGA POWDER 500 GRAMS">
   Add to cart
 </button>
         </div>
@@ -252,7 +260,7 @@ body.scrolled {
             </div>
           </div>
           <button class="snipcart-add-item"
-  data-item-id="tea"
+  data-item-id="MORINGA TEA 120 GRAMS"
   data-item-price="5"
   data-item-name="MORINGA TEA 120 GRAMS">
   Add to cart
@@ -260,7 +268,7 @@ body.scrolled {
         </div>
         <div class="card">
           <div class="img">
-            <img src="res/capsules.png" alt="t-Shirt">
+            <img src="res/capsules.png" alt="capsules">
           </div>
           <div class="text">
             <h3>Moringa Capsules</h3>
@@ -282,12 +290,253 @@ body.scrolled {
   data-item-price="20"
   
   
-  data-item-name="capsules">
+  data-item-name="MORINGA CAPSULES (pack of 200)">
   Add to cart
 </button>
         </div>
       </section>
     </main>
+
+   
+    <style>
+        /* Notification styling */
+        .bubbleinfinity-container {
+            position: relative; /* Use relative positioning for the section */
+        }
+
+        .bubbleinfinity-box {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            opacity: 0.95;
+            position: absolute; /* Make notification absolute to stay within the container */
+            top: 0;
+            right: 0;
+        }
+
+        .bubbleinfinity-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .bubbleinfinity-name {
+            font-weight: bold;
+        }
+
+        .bubbleinfinity-msg {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="notification-section">
+      <h2 style="text-align: center;">What our Global Customers have to say</h2>
+        
+
+        <!-- Notification container inside this section -->
+        <div id="bubbleinfinity" class="bubbleinfinity-container"></div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function($) {
+            $.bubbleInfinity = function() {
+
+                var active_msgs = [];
+
+                initMsgs();
+
+                var timer = setInterval(run, 1000);
+
+                function randRange(data) {
+                    var newTime = data[Math.floor(data.length * Math.random())];
+                    return newTime;
+                }
+
+                function run() {
+                    getRandomUser();
+
+                    var timeArray = [2000, 5000, 7000];
+                    var fetch = randRange(timeArray);
+
+                    clearInterval(timer);
+                    timer = setInterval(run, fetch);
+                }
+
+                function getRndInteger(min, max) {
+                    return Math.floor(Math.random() * (max - min)) + min;
+                }
+
+                function getRandomUser() {
+                    var data = [];
+
+                    $.getJSON('https://randomuser.me/api/', function(json) {
+                        data['name'] = json.results[0].name.first + " " + json.results[0].name.last;
+                        data['image'] = json.results[0].picture.medium;
+
+                        showNotification(data);
+                    });
+                }
+
+                function showNotification(data) {
+                    var notification_html = 
+                        '<div class="bubbleinfinity-box">' +
+                        '<img src="' + data['image'] + '" class="bubbleinfinity-picture">' +
+                        '<div>' +
+                        '<div class="bubbleinfinity-name">' + data['name'] + '</div>' +
+                        '<div class="bubbleinfinity-msg">' + getRandomMsg() + '</div>' +
+                        '</div>' +
+                        '</div>';
+
+                    $('#bubbleinfinity').append(notification_html);
+
+                    // Automatically hide the notification after 5 seconds
+                    setTimeout(function() {
+                        $('#bubbleinfinity').find('.bubbleinfinity-box').first().fadeOut(function() {
+                            $(this).remove();
+                        });
+                    }, 5000);
+                }
+
+                function getRandomMsg() {
+                    if(active_msgs.length === 0) {
+                        initMsgs();
+                    }
+
+                    var msg_index = getRndInteger(0, active_msgs.length);
+                    var msg = active_msgs[msg_index];
+
+                    active_msgs.splice(msg_index, 1);
+
+                    return msg;
+                }
+
+                function initMsgs() {
+                    var msgs = [
+                        "Thank you, Moringa Nepal! Your moringa powder changed my daily routine!",
+                        "Just received my moringa tea delivery, and it’s amazing!",
+                        "Join Moringa Nepal’s journey to better health!",
+                        "Can't believe the quality at this price from Moringa Nepal!",
+                        "Definitely gonna tell my friends about Moringa Nepal!",
+                        "Just got my moringa tea yesterday, and I love it!",
+                        "Best quality moringa from Nepal – totally worth it!",
+                        "Ordering more moringa capsules from Moringa Nepal!",
+                        "Feeling amazing after switching to Moringa Nepal!",
+                        "Show me how you make such high-quality products!"
+                    ];
+
+                    active_msgs = msgs;
+                }
+            }
+        }(jQuery));
+
+        $.bubbleInfinity();
+    </script>
+
+</body>
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Accordion Web Component</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"
+/>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="accordion__wrapper">
+            <h1 class="accordion__title">Frequently Asked Questions</h1>
+    
+            <!-- Accordion 1  -->
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__question">What is the purpose of this pen?</h2>
+                    <span class="accordion__icon">
+                        <i id="accordion-icon" class="ri-add-line"></i>
+                    </span>
+                </div>
+                <div class="accordion__content">
+                    <p class="accordion__answer">This pen is designed to provide web developers with boilerplate code for a FAQ Accordion.</p>
+                </div>
+            </div>
+    
+            <!-- Accordion 2  -->
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__question">What is an accordion?</h2>
+                    <span class="accordion__icon">
+                        <i id="accordion-icon" class="ri-add-line"></i>
+                    </span>
+                </div>
+                <div class="accordion__content">
+                    <p class="accordion__answer">An accordion is a vertically stacked list of headers that users can click on to reveal more information about a business. With an accordion, when someone visits your web page, they will see a list of headers.</p>
+                </div>
+            </div>
+    
+            <!-- Accordion 3 -->
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__question">How can I customize the accordion?</h2>
+                    <span class="accordion__icon">
+                        <i id="accordion-icon" class="ri-add-line"></i>
+                    </span>
+                </div>
+                <div class="accordion__content">
+                    <p class="accordion__answer">You can customize the accordion by modifying the CSS styles and changing the HTML structure as per your needs. You can also add JavaScript to enhance its functionality.</p>
+                </div>
+            </div>
+
+            <!-- Accordion 4 -->
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__question">Is this accordion responsive?</h2>
+                    <span class="accordion__icon">
+                        <i id="accordion-icon" class="ri-add-line"></i>
+                    </span>
+                </div>
+                <div class="accordion__content">
+                    <p class="accordion__answer">Yes, this accordion is designed to be responsive and will adjust its layout based on the screen size to ensure a good user experience on both desktop and mobile devices.</p>
+                </div>
+            </div>
+    
+            <!-- Accordion 5 -->
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__question">Can I use this accordion in my project?</h2>
+                    <span class="accordion__icon">
+                        <i id="accordion-icon" class="ri-add-line"></i>
+                    </span>
+                </div>
+                <div class="accordion__content">
+                    <p class="accordion__answer">Absolutely! Feel free to use this accordion in your projects. You can modify and adapt it as needed to fit your requirements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="scripts/script.js"></script>
+</body>
+
+
+
+
+
+
     <!-- Footer Section -->
     
 <div class="footer">
