@@ -19,24 +19,24 @@
 
     <style>
       /* Set initial background image for larger screens */
-body {
-    background-image: url('res/bg.png');
-    background-size: cover;
+      body {
+    background-color: #C2D6B6; /* Primary background color */
+    background-image: url('res/bg.png'); /* Default image for larger screens */
+    background-size: cover; /* Cover the entire area */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
+    background-position: center;
 }
 
-
-
-/* Set background image for mobile devices */
+/* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
     body {
-        background-image: url('res/bg1.png'); /* Change background image for mobile */
-        background-size: cover;
-        background-attachment: fixed; /* Optional: If you want it to be fixed */
-        background-repeat: repeat;
-        background-color: #C2D6B6; /* Same fallback color for mobile */
+        background-color: #C2D6B6; /* Same background color */
+        background-image: url('res/bg1.png'); /* Mobile background image */
+        background-size: contain; /* Fit the image within the screen */
+        background-position: center top; /* Start the image from the top */
+        background-repeat: no-repeat; /* No repeat to prevent multiple images */
+        background-attachment: scroll; /* Ensure smooth scrolling on mobile */
     }
 }
 
