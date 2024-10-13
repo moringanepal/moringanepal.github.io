@@ -208,6 +208,226 @@ body {
 });
       </script>
   </div>
+
+
+  <br>
+  <br>
+  
+  <style>
+    .card-header {
+        position: relative;
+        top: 1rem; /* Adjust as necessary */
+        left: 50%;
+        transform: translateX(-50%);
+        color: gold; /* Gold color for the header */
+        font-size: 1.5rem; /* Adjust size as necessary */
+        font-weight: bold;
+        text-align: center;
+        z-index: 3; /* Make sure it's above other content */
+    }
+</style>
+
+<div class="card">
+    <div class="card-header"><h1>Nutrients found in Moringa</h1></div>
+   
+</div>
+<br>
+<br>
+  
+  <style>
+    .moringa-carousel-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .moringa-carousel {
+      position: relative;
+      width: 23rem;
+      height: 23rem;
+      perspective: 500px;
+      transform-style: preserve-3d;
+      z-index: 1;
+    }
+
+    .moringa-card-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: 
+        rotateY(calc(var(--offset) * 50deg)) 
+        scaleY(calc(1 + var(--abs-offset) * -0.4))
+        translateZ(calc(var(--abs-offset) * -30rem))
+        translateX(calc(var(--direction) * -5rem));
+      filter: blur(calc(var(--abs-offset) * 1rem));
+      transition: all 0.3s ease-out;
+    }
+
+    .moringa-card {
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      background-color: hsl(280deg, 40%, calc(100% - var(--abs-offset) * 50%));
+      border-radius: 1rem;
+      color: #9CA3AF;
+      text-align: justify;
+      transition: all 0.3s ease-out;
+    }
+
+    .moringa-card h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0 0 0.7em;
+      color: #1F2937;
+    }
+
+    .moringa-card p, .moringa-card h2 {
+      transition: all 0.3s ease-out;
+      opacity: var(--active);
+    }
+
+    .moringa-nav {
+      color: white;
+      font-size: 5rem;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      z-index: 2;
+      cursor: pointer;
+      user-select: none;
+      background: unset;
+      border: unset;
+    }
+
+    .moringa-nav.left {
+      transform: translateX(-100%) translateY(-50%);
+    }
+
+    .moringa-nav.right {
+  right: -50%; /* Adjust this value to move it further right */
+  transform: translateX(100%) translateY(-50%);
+  /* Optional: Add padding to make the button larger */
+  padding: 1rem; 
+}
+  </style>
+</head>
+<body>
+  <div class="moringa-carousel-wrapper">
+    <div id="moringa-root"></div>
+  </div>
+
+  <script type="module">
+    import React, { useState } from 'https://cdn.skypack.dev/react';
+    import ReactDOM from 'https://cdn.skypack.dev/react-dom';
+    import { TiChevronLeftOutline, TiChevronRightOutline } from 'https://esm.sh/react-icons/ti';
+
+    const NUTRIENTS = [
+   
+  {title: 'Vitamin C', content: 'Vitamin C is vital for the repair of tissue and the enzymatic production of certain neurotransmitters. Moringa powder contains more Vitamin C than oranges.'},
+  {title: 'Vitamin A', content: 'Vitamin A is crucial for maintaining healthy vision and skin. Moringa powder contains more Vitamin A than carrots.'},
+  {title: 'Calcium', content: 'Calcium is essential for strong bones and teeth. Moringa powder contains more calcium than milk.'},
+  {title: 'Iron', content: 'Iron is important for red blood cell production and preventing anemia. Moringa powder contains more iron than spinach.'},
+  {title: 'Potassium', content: 'Potassium helps regulate fluid balance and muscle contractions. Moringa powder has more potassium than bananas.'},
+  {title: 'Magnesium', content: 'Magnesium is vital for muscle function and energy production. Moringa powder has more magnesium than almonds.'},
+  {title: 'Protein', content: 'Protein is essential for building and repairing tissues. Moringa powder contains more protein than yogurt.'},
+  {title: 'Vitamin E', content: 'Vitamin E acts as an antioxidant and supports skin health. Moringa powder has more vitamin E than avocados.'},
+  {title: 'Vitamin K', content: 'Vitamin K is important for blood clotting and bone health. Moringa powder contains more vitamin K than broccoli.'},
+  {title: 'Folate', content: 'Folate is crucial for DNA synthesis and cell division. Moringa powder has more folate than lentils.'},
+  {title: 'Zinc', content: 'Zinc supports immune function and wound healing. Moringa powder contains more zinc than chickpeas.'},
+  {title: 'Omega-3 Fatty Acids', content: 'Omega-3s are important for heart and brain health. Moringa powder has more omega-3s than chia seeds.'},
+  {title: 'Omega-6 Fatty Acids', content: 'Omega-6 fatty acids are essential for brain function and skin health. Moringa powder contains more omega-6s than corn oil.'},
+  {title: 'Selenium', content: 'Selenium acts as an antioxidant and supports thyroid function. Moringa powder contains more selenium than brown rice.'},
+  {title: 'Copper', content: 'Copper is vital for iron metabolism and the formation of red blood cells. Moringa powder has more copper than beef liver.'},
+  {title: 'Manganese', content: 'Manganese is important for bone formation and metabolism. Moringa powder contains more manganese than pine nuts.'},
+  {title: 'Fiber', content: 'Fiber supports digestive health and helps regulate blood sugar levels. Moringa powder has more fiber than oats.'},
+  {title: 'Chlorophyll', content: 'Chlorophyll aids in detoxification and boosts energy levels. Moringa powder is rich in chlorophyll, contributing to its green color.'},
+  {title: 'Beta-Carotene', content: 'Beta-carotene is an antioxidant that converts to vitamin A in the body. Moringa powder contains more beta-carotene than carrots.'},
+  {title: 'Flavonoids', content: 'Flavonoids are powerful antioxidants that support heart health. Moringa powder is rich in flavonoids like quercetin and kaempferol.'},
+  {title: 'Quercetin', content: 'Quercetin is known for its anti-inflammatory and antihistamine effects. Moringa powder has higher quercetin content than most fruits.'},
+  {title: 'Kaempferol', content: 'Kaempferol is an antioxidant that may help reduce the risk of chronic diseases. Moringa powder is a significant source of kaempferol.'},
+  {title: 'Lutein', content: 'Lutein is important for eye health and may help prevent cataracts. Moringa powder contains more lutein than spinach.'},
+  {title: 'Zeaxanthin', content: 'Zeaxanthin supports eye health and may reduce the risk of macular degeneration. Moringa powder is a good source of zeaxanthin.'},
+  {title: 'Choline', content: 'Choline is important for brain development and liver function. Moringa powder contains choline, supporting cognitive health.'},
+  {title: 'Vitamin B1 (Thiamine)', content: 'Thiamine is essential for energy metabolism and nerve function. Moringa powder contains more thiamine than peas.'},
+  {title: 'Vitamin B2 (Riboflavin)', content: 'Riboflavin is important for energy production and skin health. Moringa powder contains more riboflavin than eggs.'},
+  {title: 'Vitamin B3 (Niacin)', content: 'Niacin supports energy metabolism and skin health. Moringa powder has more niacin than mushrooms.'},
+  {title: 'Vitamin B5 (Pantothenic Acid)', content: 'Pantothenic acid is crucial for synthesizing coenzyme A. Moringa powder contains more B5 than avocados.'},
+  {title: 'Vitamin B6 (Pyridoxine)', content: 'Pyridoxine is important for protein metabolism and cognitive development. Moringa powder has more B6 than fish.'},
+  {title: 'Vitamin B7 (Biotin)', content: 'Biotin supports healthy hair, skin, and nails. Moringa powder contains biotin, promoting overall health.'},
+  {title: 'Vitamin B9 (Folic Acid)', content: 'Folic acid is crucial for DNA synthesis and cell division. Moringa powder has more folate than spinach.'},
+  {title: 'Vitamin D', content: 'Vitamin D is important for bone health and immune function. Moringa powder helps improve vitamin D levels in the body.'},
+];
+
+    
+
+    function MoringaCarousel() {
+      const [activeIndex, setActiveIndex] = useState(0);
+
+      const handlePrev = () => {
+        setActiveIndex((prevIndex) => (prevIndex - 1 + NUTRIENTS.length) % NUTRIENTS.length);
+      };
+
+      const handleNext = () => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % NUTRIENTS.length);
+      };
+
+      return React.createElement(
+        'div',
+        { className: 'moringa-carousel' },
+        React.createElement(
+          'button',
+          { className: 'moringa-nav left', onClick: handlePrev },
+          React.createElement(TiChevronLeftOutline)
+        ),
+        React.createElement(
+          'button',
+          { className: 'moringa-nav right', onClick: handleNext },
+          React.createElement(TiChevronRightOutline)
+        ),
+        NUTRIENTS.map((nutrient, index) => {
+          const offset = (index - activeIndex) % NUTRIENTS.length;
+          const absOffset = Math.abs(offset);
+          const direction = offset > 0 ? 1 : -1;
+
+          return React.createElement(
+            'div',
+            {
+              key: index,
+              className: 'moringa-card-container',
+              style: {
+                '--offset': offset,
+                '--abs-offset': absOffset,
+                '--direction': direction,
+                '--active': offset === 0 ? 1 : 0,
+              },
+            },
+            React.createElement(
+              'div',
+              { className: 'moringa-card' },
+              React.createElement('h2', null, nutrient.title),
+              React.createElement('p', null, nutrient.content)
+            )
+          );
+        })
+      );
+    }
+
+    ReactDOM.render(React.createElement(MoringaCarousel), document.getElementById('moringa-root'));
+  </script>
+</body>
+</html>
   
         
         
@@ -442,7 +662,20 @@ body {
     </script>
 
 </body>
-</html>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
 
 <head>
     <meta charset="UTF-8">
