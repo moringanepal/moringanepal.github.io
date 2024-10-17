@@ -76,7 +76,7 @@
         <span>ABOUT US</span>
       </a>
       <a href="#" class="snipcart-checkout link">
-        <span><img src="res/cart.png" alt="Cart" width="40" height="40">(<span class="snipcart-items-count">0</span>)</span>
+        <span>🛒(<span class="snipcart-items-count">0</span>)</span>
       </a>
   
       <div class="cursor"></div>
@@ -243,7 +243,7 @@
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      position: relative;
+      position: static;
     }
 
     * {
@@ -254,9 +254,9 @@
       position: relative;
       width: 23rem;
       height: 23rem;
-      perspective: 500px;
-      transform-style: preserve-3d;
-      z-index: 1;
+      perspective: 0px;
+  
+      z-index:1;
     }
 
     .moringa-card-container {
@@ -264,12 +264,12 @@
       width: 100%;
       height: 100%;
       transform: 
-        rotateY(calc(var(--offset) * 50deg)) 
+        
         scaleY(calc(1 + var(--abs-offset) * -0.4))
         translateZ(calc(var(--abs-offset) * -30rem))
         translateX(calc(var(--direction) * -5rem));
       filter: blur(calc(var(--abs-offset) * 1rem));
-      transition: all 0.3s ease-out;
+      
     }
 
     .moringa-card {
@@ -279,7 +279,7 @@
       background-color: hsl(280deg, 40%, calc(100% - var(--abs-offset) * 50%));
       border-radius: 1rem;
       color: #9CA3AF;
-      text-align: justify;
+      text-align: match-parent;
       transition: all 0.3s ease-out;
     }
 
@@ -560,7 +560,8 @@
     <section id="notification-section">
       <h2 style="text-align: center;">What our Global Customers have to say</h2>
         
-
+<br>
+<br>
         <!-- Notification container inside this section -->
         <div id="bubbleinfinity" class="bubbleinfinity-container"></div>
     </section>
