@@ -3,6 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
 
 
 
@@ -79,7 +80,7 @@
     --color-border: #dae1f5;
     
     /* Fonts */
-    --font-family: "Satoshi", sans-serif;
+    --font-family: 'chelseamarket', "Satoshi", sans-serif;
     --fs-sm: 1.4rem;
     --fs-md: 1.6rem;
     --fs-lg: 2.2rem;
@@ -405,18 +406,7 @@
 
        
        /* Flower images closer to the text */
-       #topRightImage {
-           position: absolute;
-           top: 150px;
-           right: 335px;
-           width: 200px;
-       }
-       #bottomLeftImage {
-           position: absolute;
-           bottom: 40px;
-           left: 330px;
-           width: 200px;
-       }
+       
 
        
 
@@ -836,12 +826,13 @@ body{
 }
 
 #mobileEarth{display: none}
-.blueGradientText{
-    background: linear-gradient(to right,rgb(223 95 255),rgb(78 124 255));
+.blueGradientText {
+    background: linear-gradient(to right, rgb(223, 95, 255), rgb(78, 124, 255));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation-name: bounce;
-    animation-duration:4s;
+    animation-duration: 4s;
+    font-family: 'Chelsea Market', cursive;
 }
 
 @keyframes bounce {
