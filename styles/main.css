@@ -833,6 +833,7 @@ body{
     animation-name: bounce;
     animation-duration: 4s;
     font-family: 'Chelsea Market', cursive;
+    font-size: clamp(6rem, 8vw, 12rem);
 }
 
 @keyframes bounce {
