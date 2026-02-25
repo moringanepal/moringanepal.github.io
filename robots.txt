@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moringanepal.com.np/sitemap.xml
